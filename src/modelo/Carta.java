@@ -1,60 +1,46 @@
 package modelo;
 
+/**
+ * Representa una carta con palo y valor en el juego de Blackjack.
+ * @author TuNombre
+ * @version 1.0
+ */
 public class Carta {
+	private final int valor;
+	private final String palo;
 
-	public enum Palo {
-			TREBOl, DIAMANTE ,CORAZONES, PICAS
-	}
-	
-	private int numero;
-	private Palo palo;
-	
-	
-	public Carta(int numero, Palo palo) {
-		if (numero>=1 && numero<=13) {
-			this.numero = numero;
-			this.palo = palo;
-		}
+	/**
+	 * Crea una nueva carta con un valor y un palo especificados.
+	 * @param valor Valor de la carta.
+	 * @param palo Palo de la carta (corazones, diamantes, etc).
+	 */
+	public Carta(int valor, String palo) {
+		this.valor = valor;
+		this.palo = palo;
 	}
 
-	public int getNumero() {
-		return numero;
-	}
-
-	public Palo getPalo() {
-		return palo;
-	}
-	
+	/**
+	 * Obtiene el valor de la carta.
+	 * @return Valor numérico de la carta.
+	 */
 	public int getValor() {
-		int valor;
-		
-		if (this.numero>=2 && this.numero<=10) {
-			valor=this.numero;
-		} else if (this.numero==1){
-			valor=11;
-		} else {
-			valor=10;
-		}
-
 		return valor;
 	}
-	
-	public String mostrarNumero() {
-        if (this.numero == 1) {
-            return "AS";
-        } else if (this.numero == 11) {
-            return "J";
-        } else if (this.numero == 12) {
-            return "Q";
-        } else if (this.numero == 13) {
-            return "K";
-        }
-        return "" + this.numero;
-    }
 
-	@Override
-	public String toString() {
-		return "["+ mostrarNumero() + " - " + palo + "]";
+	/**
+	 * Obtiene el palo de la carta.
+	 * @return Palo de la carta.
+	 */
+	public String getPalo() {
+		return palo;
 	}
 
+	/**
+	 * Devuelve una representación en texto de la carta.
+	 * @return String con el formato "valor de palo".
+	 */
+	@Override
+	public String toString() {
+		return valor + " de " + palo;
+	}
 }
